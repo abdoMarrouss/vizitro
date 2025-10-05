@@ -6,15 +6,19 @@ A lightweight, privacy-friendly web analytics platform built with modern technol
 
 > **Note:** This repository contains code examples and documentation for portfolio purposes. The complete application source code is proprietary.
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)](https://nestjs.com/)
-[![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white)](https://angular.io/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+
+## 📸 Screenshot
+
+![Vizitro Dashboard](screens/screencapture-vizitro-2025-10-06-00_06_53.png)
 
 ## 📋 Table of Contents
 
 - [Features](#features)
-- [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
 - [Quick Start](#quick-start)
 - [API Documentation](#api-documentation)
@@ -48,26 +52,6 @@ A lightweight, privacy-friendly web analytics platform built with modern technol
 - **IP Hashing Option** - Optional IP address anonymization
 - **Session Storage** - Uses sessionStorage instead of cookies
 - **Data Deletion** - Users can delete their data on request
-
-## 🏗 Architecture
-
-Vizitro uses a modern 3-tier architecture:
-┌─────────────────┐
-│   Web Tracker   │ ← Lightweight JS (~2KB)
-│   (Any Site)    │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐
-│   NestJS API    │ ← RESTful Backend
-│   (TypeORM)     │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐
-│   MySQL DB      │ ← Data Storage
-└─────────────────┘
-See [Architecture Documentation](docs/architecture.md) for detailed design patterns.
 
 ## 🛠 Tech Stack
 
