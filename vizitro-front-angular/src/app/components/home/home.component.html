@@ -1,0 +1,563 @@
+<div class="flex min-h-screen bg-gray-50">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg fixed h-full overflow-y-auto">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-purple-600 mb-2">TailwindUI</h1>
+            <p class="text-sm text-gray-600 mb-6">Component Library</p>
+
+            <nav class="space-y-2">
+                <button *ngFor="let category of categories" (click)="selectCategory(category.id)"
+                    [class.bg-purple-100]="selectedCategory === category.id"
+                    [class.text-purple-600]="selectedCategory === category.id"
+                    class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3">
+                    <span>{{ category.icon }}</span>
+                    <span class="font-medium">{{ category.name }}</span>
+                </button>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 p-8">
+
+        <!-- Buttons Section -->
+        <div *ngIf="selectedCategory === 'buttons'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Buttons</h2>
+                <p class="text-gray-600 mb-8">Beautiful button components for your application</p>
+            </div>
+
+            <!-- Primary Buttons -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Primary Buttons</h3>
+                <div class="flex gap-4 mb-4 flex-wrap">
+                    <button
+                        class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Primary</button>
+                    <button
+                        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Blue</button>
+                    <button
+                        class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Success</button>
+                    <button
+                        class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">Danger</button>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<button class=\'bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition\'>Primary</button>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('bg-purple-600') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <code
+                        class="text-sm">&lt;button class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition"&gt;Primary&lt;/button&gt;</code>
+                </div>
+            </div>
+
+            <!-- Outline Buttons -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Outline Buttons</h3>
+                <div class="flex gap-4 mb-4 flex-wrap">
+                    <button
+                        class="border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-50 transition">Outline</button>
+                    <button
+                        class="border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition">Blue</button>
+                    <button
+                        class="border-2 border-green-600 text-green-600 px-6 py-2 rounded-lg hover:bg-green-50 transition">Success</button>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<button class=\'border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-50 transition\'>Outline</button>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('border-2 border-purple-600') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <code
+                        class="text-sm">&lt;button class="border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-50 transition"&gt;Outline&lt;/button&gt;</code>
+                </div>
+            </div>
+
+            <!-- Button Sizes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Button Sizes</h3>
+                <div class="flex gap-4 mb-4 items-center flex-wrap">
+                    <button
+                        class="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition text-sm">Small</button>
+                    <button
+                        class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Medium</button>
+                    <button
+                        class="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition text-lg">Large</button>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<button class=\'bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition text-sm\'>Small</button>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('px-3 py-1') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <code
+                        class="text-sm">&lt;button class="bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition text-sm"&gt;Small&lt;/button&gt;</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div *ngIf="selectedCategory === 'cards'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Cards</h2>
+                <p class="text-gray-600 mb-8">Versatile card components for content display</p>
+            </div>
+
+            <!-- Simple Card -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Simple Card</h3>
+                <div class="mb-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 max-w-sm">
+                        <h4 class="text-lg font-semibold mb-2">Card Title</h4>
+                        <p class="text-gray-600">This is a simple card component with a title and description.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-white border border-gray-200 rounded-lg p-6\'>\n  <h4 class=\'text-lg font-semibold mb-2\'>Card Title</h4>\n  <p class=\'text-gray-600\'>This is a simple card component.</p>\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Card Title') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-white border border-gray-200 rounded-lg p-6"&gt;
+  &lt;h4 class="text-lg font-semibold mb-2"&gt;Card Title&lt;/h4&gt;
+  &lt;p class="text-gray-600"&gt;Description here&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Card with Button -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Card with Button</h3>
+                <div class="mb-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 max-w-sm">
+                        <h4 class="text-lg font-semibold mb-2">Feature Card</h4>
+                        <p class="text-gray-600 mb-4">Learn more about this amazing feature.</p>
+                        <button
+                            class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">Learn
+                            More</button>
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-white border border-gray-200 rounded-lg p-6\'>\n  <h4 class=\'text-lg font-semibold mb-2\'>Feature Card</h4>\n  <p class=\'text-gray-600 mb-4\'>Description</p>\n  <button class=\'bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition\'>Learn More</button>\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Feature Card') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-white border border-gray-200 rounded-lg p-6"&gt;
+  &lt;h4 class="text-lg font-semibold mb-2"&gt;Feature Card&lt;/h4&gt;
+  &lt;p class="text-gray-600 mb-4"&gt;Description&lt;/p&gt;
+  &lt;button class="bg-purple-600 text-white px-4 py-2 rounded-lg"&gt;Learn More&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Stats Card</h3>
+                <div class="mb-4">
+                    <div class="bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg p-6 max-w-sm text-white">
+                        <p class="text-sm opacity-90 mb-1">Total Users</p>
+                        <h4 class="text-3xl font-bold">12,543</h4>
+                        <p class="text-sm opacity-75 mt-2">↑ 12% from last month</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg p-6 text-white\'>\n  <p class=\'text-sm opacity-90 mb-1\'>Total Users</p>\n  <h4 class=\'text-3xl font-bold\'>12,543</h4>\n  <p class=\'text-sm opacity-75 mt-2\'>↑ 12% from last month</p>\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Total Users') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg p-6 text-white"&gt;
+  &lt;p class="text-sm opacity-90 mb-1"&gt;Total Users&lt;/p&gt;
+  &lt;h4 class="text-3xl font-bold"&gt;12,543&lt;/h4&gt;
+  &lt;p class="text-sm opacity-75 mt-2"&gt;↑ 12% from last month&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms Section -->
+        <div *ngIf="selectedCategory === 'forms'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Forms</h2>
+                <p class="text-gray-600 mb-8">Input fields and form components</p>
+            </div>
+
+            <!-- Text Input -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Text Input</h3>
+                <div class="mb-4 max-w-md">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" placeholder="you@example.com"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition">
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<label class=\'block text-sm font-medium text-gray-700 mb-2\'>Email Address</label>\n<input type=\'email\' placeholder=\'you@example.com\' class=\'w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition\'>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Email Address') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Email Address&lt;/label&gt;
+&lt;input type="email" placeholder="youexample.com" 
+  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Textarea</h3>
+                <div class="mb-4 max-w-md">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea rows="4" placeholder="Enter your message..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"></textarea>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<label class=\'block text-sm font-medium text-gray-700 mb-2\'>Message</label>\n<textarea rows=\'4\' placeholder=\'Enter your message...\' class=\'w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition\'></textarea>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Message') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre
+                        class="text-sm overflow-x-auto"><code>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Message&lt;/label&gt;
+&lt;textarea rows="4" placeholder="Enter your message..." 
+  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"&gt;&lt;/textarea&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Select Dropdown -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Select Dropdown</h3>
+                <div class="mb-4 max-w-md">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Country</label>
+                    <select
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition">
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                    </select>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<label class=\'block text-sm font-medium text-gray-700 mb-2\'>Country</label>\n<select class=\'w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition\'>\n  <option>United States</option>\n  <option>Canada</option>\n</select>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Country') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Country&lt;/label&gt;
+&lt;select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"&gt;
+  &lt;option&gt;United States&lt;/option&gt;
+  &lt;option&gt;Canada&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Section -->
+        <div *ngIf="selectedCategory === 'alerts'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Alerts</h2>
+                <p class="text-gray-600 mb-8">Notification and alert components</p>
+            </div>
+
+            <!-- Success Alert -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Success Alert</h3>
+                <div class="mb-4">
+                    <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                        <strong class="font-semibold">Success!</strong> Your changes have been saved.
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg\'>\n  <strong class=\'font-semibold\'>Success!</strong> Your changes have been saved.\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Success!') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg"&gt;
+  &lt;strong class="font-semibold"&gt;Success!&lt;/strong&gt; Your changes have been saved.
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Error Alert -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Error Alert</h3>
+                <div class="mb-4">
+                    <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                        <strong class="font-semibold">Error!</strong> Something went wrong. Please try again.
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg\'>\n  <strong class=\'font-semibold\'>Error!</strong> Something went wrong.\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Error!') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg"&gt;
+  &lt;strong class="font-semibold"&gt;Error!&lt;/strong&gt; Something went wrong.
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Warning Alert -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Warning Alert</h3>
+                <div class="mb-4">
+                    <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg">
+                        <strong class="font-semibold">Warning!</strong> Please review your information before
+                        submitting.
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg\'>\n  <strong class=\'font-semibold\'>Warning!</strong> Please review your information.\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Warning!') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg"&gt;
+  &lt;strong class="font-semibold"&gt;Warning!&lt;/strong&gt; Please review your information.
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Info Alert -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Info Alert</h3>
+                <div class="mb-4">
+                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg">
+                        <strong class="font-semibold">Info:</strong> New features are now available.
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg\'>\n  <strong class=\'font-semibold\'>Info:</strong> New features are now available.\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Info:') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg"&gt;
+  &lt;strong class="font-semibold"&gt;Info:&lt;/strong&gt; New features are now available.
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div *ngIf="selectedCategory === 'badges'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Badges</h2>
+                <p class="text-gray-600 mb-8">Small status indicators and labels</p>
+            </div>
+
+            <!-- Color Badges -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Color Badges</h3>
+                <div class="flex gap-3 mb-4 flex-wrap">
+                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Purple</span>
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Blue</span>
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Success</span>
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Danger</span>
+                    <span
+                        class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Warning</span>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<span class=\'bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium\'>Purple</span>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('bg-purple-100') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <code
+                        class="text-sm">&lt;span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"&gt;Purple&lt;/span&gt;</code>
+                </div>
+            </div>
+
+            <!-- Solid Badges -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Solid Badges</h3>
+                <div class="flex gap-3 mb-4 flex-wrap">
+                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">New</span>
+                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</span>
+                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Active</span>
+                    <span class="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-medium">Archived</span>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<span class=\'bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium\'>New</span>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('bg-purple-600 text-white') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <code
+                        class="text-sm">&lt;span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium"&gt;New&lt;/span&gt;</code>
+                </div>
+            </div>
+
+            <!-- Pill Badges -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Pill Badges (with dot)</h3>
+                <div class="flex gap-3 mb-4 flex-wrap">
+                    <span
+                        class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                        <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+                        Online
+                    </span>
+                    <span
+                        class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                        <span class="w-2 h-2 bg-gray-600 rounded-full"></span>
+                        Offline
+                    </span>
+                    <span
+                        class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                        <span class="w-2 h-2 bg-yellow-600 rounded-full"></span>
+                        Pending
+                    </span>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<span class=\'bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1\'>\n  <span class=\'w-2 h-2 bg-green-600 rounded-full\'></span>\n  Online\n</span>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Online') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1"&gt;
+  &lt;span class="w-2 h-2 bg-green-600 rounded-full"&gt;&lt;/span&gt;
+  Online
+&lt;/span&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div *ngIf="selectedCategory === 'navigation'" class="space-y-8">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Navigation</h2>
+                <p class="text-gray-600 mb-8">Navigation bars and menu components</p>
+            </div>
+
+            <!-- Simple Navbar -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Simple Navbar</h3>
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <nav class="bg-white shadow-sm">
+                        <div class="px-6 py-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-purple-600">Brand</span>
+                                <div class="flex gap-6">
+                                    <a href="#" class="text-gray-700 hover:text-purple-600 transition">Home</a>
+                                    <a href="#" class="text-gray-700 hover:text-purple-600 transition">About</a>
+                                    <a href="#" class="text-gray-700 hover:text-purple-600 transition">Contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<nav class=\'bg-white shadow-sm\'>\n  <div class=\'px-6 py-4\'>\n    <div class=\'flex justify-between items-center\'>\n      <span class=\'text-xl font-bold text-purple-600\'>Brand</span>\n      <div class=\'flex gap-6\'>\n        <a href=\'#\' class=\'text-gray-700 hover:text-purple-600 transition\'>Home</a>\n        <a href=\'#\' class=\'text-gray-700 hover:text-purple-600 transition\'>About</a>\n      </div>\n    </div>\n  </div>\n</nav>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Brand') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;nav class="bg-white shadow-sm"&gt;
+  &lt;div class="px-6 py-4"&gt;
+    &lt;div class="flex justify-between items-center"&gt;
+      &lt;span class="text-xl font-bold text-purple-600"&gt;Brand&lt;/span&gt;
+      &lt;div class="flex gap-6"&gt;
+        &lt;a href="#" class="text-gray-700 hover:text-purple-600"&gt;Home&lt;/a&gt;
+        &lt;a href="#" class="text-gray-700 hover:text-purple-600"&gt;About&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Tabs</h3>
+                <div class="mb-4">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex gap-8">
+                            <a href="#"
+                                class="border-b-2 border-purple-600 text-purple-600 py-3 px-1 font-medium">Dashboard</a>
+                            <a href="#"
+                                class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 px-1 font-medium transition">Settings</a>
+                            <a href="#"
+                                class="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-3 px-1 font-medium transition">Profile</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<div class=\'border-b border-gray-200\'>\n  <nav class=\'flex gap-8\'>\n    <a href=\'#\' class=\'border-b-2 border-purple-600 text-purple-600 py-3 px-1 font-medium\'>Dashboard</a>\n    <a href=\'#\' class=\'border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-3 px-1 font-medium\'>Settings</a>\n  </nav>\n</div>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Dashboard') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;div class="border-b border-gray-200"&gt;
+  &lt;nav class="flex gap-8"&gt;
+    &lt;a href="#" class="border-b-2 border-purple-600 text-purple-600 py-3"&gt;Dashboard&lt;/a&gt;
+    &lt;a href="#" class="border-b-2 border-transparent text-gray-500 py-3"&gt;Settings&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Breadcrumbs -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Breadcrumbs</h3>
+                <div class="mb-4">
+                    <nav class="flex items-center gap-2 text-sm">
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Home</a>
+                        <span class="text-gray-400">/</span>
+                        <a href="#" class="text-purple-600 hover:text-purple-700">Products</a>
+                        <span class="text-gray-400">/</span>
+                        <span class="text-gray-500">Current Page</span>
+                    </nav>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<nav class=\'flex items-center gap-2 text-sm\'>\n  <a href=\'#\' class=\'text-purple-600 hover:text-purple-700\'>Home</a>\n  <span class=\'text-gray-400\'>/</span>\n  <a href=\'#\' class=\'text-purple-600 hover:text-purple-700\'>Products</a>\n  <span class=\'text-gray-400\'>/</span>\n  <span class=\'text-gray-500\'>Current Page</span>\n</nav>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Current Page') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;nav class="flex items-center gap-2 text-sm"&gt;
+  &lt;a href="#" class="text-purple-600"&gt;Home&lt;/a&gt;
+  &lt;span class="text-gray-400"&gt;/&lt;/span&gt;
+  &lt;a href="#" class="text-purple-600"&gt;Products&lt;/a&gt;
+  &lt;span class="text-gray-400"&gt;/&lt;/span&gt;
+  &lt;span class="text-gray-500"&gt;Current Page&lt;/span&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-semibold mb-4">Pagination</h3>
+                <div class="mb-4">
+                    <nav class="flex items-center gap-2">
+                        <button
+                            class="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition">Previous</button>
+                        <button class="px-4 py-2 rounded-lg bg-purple-600 text-white font-medium">1</button>
+                        <button
+                            class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition">2</button>
+                        <button
+                            class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition">3</button>
+                        <button
+                            class="px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition">Next</button>
+                    </nav>
+                </div>
+                <div class="bg-gray-900 text-gray-100 p-4 rounded-lg relative">
+                    <button
+                        (click)="copyCode('<nav class=\'flex items-center gap-2\'>\n  <button class=\'px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50\'>Previous</button>\n  <button class=\'px-4 py-2 rounded-lg bg-purple-600 text-white font-medium\'>1</button>\n  <button class=\'px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50\'>2</button>\n  <button class=\'px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50\'>Next</button>\n</nav>')"
+                        class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition">
+                        {{ copiedCode.includes('Previous') ? '✓ Copied!' : 'Copy' }}
+                    </button>
+                    <pre class="text-sm overflow-x-auto"><code>&lt;nav class="flex items-center gap-2"&gt;
+  &lt;button class="px-3 py-2 rounded-lg border border-gray-300"&gt;Previous&lt;/button&gt;
+  &lt;button class="px-4 py-2 rounded-lg bg-purple-600 text-white"&gt;1&lt;/button&gt;
+  &lt;button class="px-4 py-2 rounded-lg border border-gray-300"&gt;2&lt;/button&gt;
+  &lt;button class="px-3 py-2 rounded-lg border border-gray-300"&gt;Next&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
